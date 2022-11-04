@@ -1,0 +1,299 @@
+:root{
+    /*COLORS*/
+    
+    --black: rgba(0, 0, 0, 0.80);
+    --white: rgba(255, 255, 255, 0.95);
+    --dark-cyan: rgb(60, 128, 103);
+    --cream: rgb(242, 235, 227);
+    --very-dark-blue: rgb(28, 35, 43);
+    --dark-grayish-blue: rgb(108, 114, 137);
+    
+    /*PARAGRAPH FONT SIZE*/
+    
+    --fs-paragraph:0.875em; /*like 14px*/
+
+    /*FONT FAMILY*/
+    
+    --Montserrat: 'Montserrat', sans-serif;/*Other elements*/
+  
+    --Fraunces: 'Fraunces', serif;/*Title and price*/
+    
+}
+
+
+*{
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,body{
+    height: 100vh; /* vh : viewport height, 1vh = 1% of the viewport height */
+}
+
+body{
+    width: 100vw;
+    background-color:var(--cream);
+    font-family: var(--Montserrat);
+    font-weight: 500;
+
+}
+
+main{
+    height: 55vh;
+    width: 35em; /* 1em = 20px */
+    display: grid;
+    grid-template-columns: 50% 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 1em;
+}
+
+main img{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+/***********************************
+************************** ARTICLE *
+***********************************/
+
+main article{
+    background-color: var(--white);
+    color: var(--dark-grayish-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.7em;
+}
+
+article .top-text{
+    font-weight: 300;
+    font-size:var(--fs-paragraph);
+    letter-spacing: 0.4em;
+}
+
+article h1{
+    font-family: var(--Fraunces);
+    color: var(--very-dark-blue);
+    line-height: 1em; /* la taille d'une ligne */
+    font-size: 2em;
+}
+
+article .paragraph{
+    font-weight: 400;
+    line-height: 1.5em;
+    font-size: var(--fs-paragraph);
+    
+}
+/***********************************
+******************** PRICE SECTION *
+***********************************/
+
+article .prices{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+    
+}
+
+.prices .actual-price{
+    font-size: 1.9em;
+    font-family: var(--Fraunces);
+    color: var(--dark-cyan);
+}
+
+.sr-only{
+    display: none;
+}
+/***********************************
+*************************** BUTTON *
+***********************************/
+
+article button{
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 1.3em 1em;
+    background-color: var(--dark-cyan);
+    color: var(--white);
+    font-size: var(--fs-paragraph);
+    font-weight: 600;
+    gap: 0.7em; /* l'espacement minimum qui sépare les lignes ou les colonnes */
+    border-radius: 0.5em;
+    cursor: pointer;
+    
+}
+
+article button::before{
+    width: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    content: "";
+    background-color: var(--black);
+    opacity: 0.5;
+    transition: 250ms width ease-in;
+}
+
+article button:hover::before{
+    width:100%;
+}
+
+button img{
+    width: 1rem; 
+    height: 1rem;
+    display: flex;
+}
+
+
+/***********************************
+*************************** FOOTER *
+***********************************/
+
+.footer{
+    width: 100vw;
+    height: fit-content;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center; /* axe vertical */
+    justify-content: center; /* axe horizantal */
+    
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: var(--fs-paragraph);
+    padding: 1em 0;
+    color: var(--very-dark-blue);
+}
+
+
+footer a{
+    text-decoration: none;
+    color: var(--very-dark-blue);
+    padding: 0.1em 0.3em;
+    cursor: pointer;
+    border-radius: 0.5em;
+    transition: 300ms font-size ease-in-out, 300ms padding ease-in-out;
+}
+
+footer a:hover{
+    font-size: 1.2em;
+    padding: 0.1em 0.5em;
+}
+
+/*
+##########################
+#####   ANIMATIONS   #####
+##########################
+*/
+
+.animation-in-left{
+    animation: slideInLeft;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+}
+
+.animation-in-right{
+    animation: slideInRight;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+}
+
+/***********************************
+******************** MEDIA QUERIES *
+***********************************/
+
+@media screen and (max-width:768px) {
+    main{
+        height: 90%;
+        width: 90%;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 40% 60%;
+    }
+
+    main img{
+        width: 100%;
+        height: 100%;
+        object-fit:cover;
+        object-position: 100% 30%; 
+        grid-row-start: 1;
+    }
+  
+    main article{
+        padding: 1.3em;
+        grid-row-start: 2;
+    }
+    
+    article button{
+        padding: 1.2em 1em;
+    }
+    
+
+    button img{
+        width: 1rem;
+        height: 1rem;
+        display: flex;
+    }
+    
+.footer{
+        width: 100%;
+        height: fit-content;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-size: var(--fs-paragraph);
+        padding: 1em 0;
+        color: var(--very-dark-blue);
+    }
+   
+    footer a{
+        text-decoration: none;
+        color: var(--very-dark-blue);
+        padding: 0.1em 0.3em;
+        cursor: pointer;
+        border-radius: 0.5em;
+        transition: 300ms font-size ease-in-out, 300ms padding ease-in-out;
+    }
+     
+    footer a:hover{
+        font-size: 1.2em;
+        padding: 0.1em 0.5em;
+    }
+    .animation-in-left{
+        animation: slideInDown;
+        animation-duration: 500ms;
+        animation-timing-function: ease-in-out;
+    }
+    
+    .animation-in-right{
+        animation: slideInUp;
+        animation-duration: 500ms;
+        animation-timing-function: ease-in-out;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-height: 750px){
+    main{
+        grid-template-rows: 50% 50%;
+    }
+}
